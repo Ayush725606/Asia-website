@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asia Metal Udyog – Quality Infrastructure</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --amber: #F59E0B;
+    --amber-light: #FDE68A;
+    --green: #22C55E;
+    --green-dark: #15803D;
+    --green-light: #BBF7D0;
+    --red: #DC2626;
+    --cream: #FFFBF0;
+    --warm-white: #FFF8EE;
+    --charcoal: #1C1917;
+    --steel: #44403C;
+    --muted: #78716C;
+    --border: #E7E5E4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,251,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--amber);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .nav-logo .badge {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--amber), var(--green));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 800; color: white; font-size: 16px;
+    box-shadow: 0 4px 14px rgba(245,158,11,0.4);
+  }
+  .nav-logo .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    line-height: 1.1;
+  }
+  .brand span { color: var(--green-dark); }
+  .brand em { color: var(--red); font-style: normal; }
+
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; font-size: 14px; font-weight: 500;
+    color: var(--steel); letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green-dark); }
+
+  .nav-cta {
+    background: var(--green-dark); color: white;
+    padding: 10px 22px; border-radius: 8px;
+    font-size: 14px; font-weight: 600; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 10px rgba(21,128,61,0.3);
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(21,128,61,0.4); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #FFF8EE 0%, #F0FDF4 50%, #FFFBF0 100%);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 100px 5% 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(245,158,11,0.12), transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(34,197,94,0.1), transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green-light); color: var(--green-dark);
+    padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px;
+  }
+  .hero-tag .dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 800; line-height: 1.08;
+    color: var(--charcoal); margin-bottom: 20px;
+  }
+  h1 .highlight { color: var(--red); }
+  h1 .highlight-green { color: var(--green-dark); }
+
+  .hero-desc {
+    font-size: 16px; color: var(--muted); line-height: 1.7;
+    margin-bottom: 36px; max-width: 480px;
+  }
+
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--green-dark), var(--green));
+    color: white; padding: 14px 32px; border-radius: 10px;
+    font-size: 15px; font-weight: 600; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(21,128,61,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(21,128,61,0.45); }
+
+  .btn-secondary {
+    background: white; color: var(--charcoal);
+    padding: 14px 32px; border-radius: 10px;
+    font-size: 15px; font-weight: 600; text-decoration: none;
+    border: 2px solid var(--border);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--amber); transform: translateY(-3px); }
+
+  /* Hero image side */
+  .hero-visual {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+  .hero-card {
+    border-radius: 18px; overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    aspect-ratio: 3/4; position: relative;
+  }
+  .hero-card img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-card:first-child { margin-top: 40px; }
+  .hero-card .card-label {
+    position: absolute; bottom: 12px; left: 12px; right: 12px;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);
+    padding: 8px 12px; border-radius: 10px;
+    font-size: 12px; font-weight: 600; color: var(--charcoal);
+  }
+
+  /* STATS */
+  .stats-bar {
+    background: var(--charcoal);
+    padding: 36px 5%;
+  }
+  .stats-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px; font-weight: 800; color: var(--amber);
+    line-height: 1;
+  }
+  .stat-label { font-size: 13px; color: #A8A29E; margin-top: 6px; font-weight: 500; }
+
+  /* SECTION COMMONS */
+  section { padding: 90px 5%; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--green-dark);
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800; color: var(--charcoal); margin-bottom: 16px;
+  }
+  .section-desc { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 580px; }
+
+  /* ABOUT */
+  .about { background: var(--warm-white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    margin-top: 60px;
+  }
+  .about-image {
+    border-radius: 24px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    position: relative;
+  }
+  .about-image img { width: 100%; display: block; }
+  .about-image .ribbon {
+    position: absolute; top: 24px; left: -8px;
+    background: var(--red); color: white;
+    padding: 8px 20px 8px 16px; font-size: 13px; font-weight: 700;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+  }
+
+  .pillars { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+  .pillar {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: white; padding: 20px; border-radius: 14px;
+    border-left: 4px solid var(--amber);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pillar:hover { transform: translateX(6px); box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
+  .pillar-icon {
+    width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .pillar-icon.amber { background: #FEF3C7; }
+  .pillar-icon.green { background: var(--green-light); }
+  .pillar-icon.red { background: #FEE2E2; }
+  .pillar h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .pillar p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* PRODUCTS */
+  .products { background: var(--cream); }
+  .products-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
+
+  .products-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+
+  .product-card {
+    background: white; border-radius: 20px;
+    overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+  .product-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+  .product-img {
+    height: 220px; overflow: hidden; background: #F5F5F4;
+    display: flex; align-items: center; justify-content: center; font-size: 60px;
+    position: relative;
+  }
+  .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .product-card:hover .product-img img { transform: scale(1.08); }
+  .product-badge {
+    position: absolute; top: 14px; right: 14px;
+    background: var(--green-dark); color: white;
+    padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700;
+  }
+  .product-body { padding: 22px; }
+  .product-body h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .product-body p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+  .product-specs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .spec-tag {
+    background: var(--cream); border: 1px solid var(--border);
+    padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--steel);
+  }
+
+  /* MISSION / VISION / VALUES */
+  .values { background: var(--charcoal); }
+  .values h2 { color: white; }
+  .values .section-tag { color: var(--amber); }
+  .values .section-desc { color: #A8A29E; }
+
+  .values-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 50px;
+  }
+  .value-card {
+    border-radius: 18px; padding: 32px 28px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.3s;
+  }
+  .value-card:hover { background: rgba(255,255,255,0.09); }
+  .value-card .icon { font-size: 32px; margin-bottom: 18px; }
+  .value-card h3 { font-size: 18px; font-weight: 700; color: white; margin-bottom: 10px; }
+  .value-card p { font-size: 14px; color: #A8A29E; line-height: 1.7; }
+  .value-card .accent { color: var(--amber); font-weight: 700; }
+
+  /* LEADERSHIP */
+  .leadership { background: var(--warm-white); }
+  .leader-card {
+    background: white; border-radius: 24px;
+    overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+    display: grid; grid-template-columns: 340px 1fr;
+    margin-top: 50px;
+  }
+  .leader-img {
+    background: linear-gradient(160deg, #FEF3C7, #D1FAE5);
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-top: 40px; overflow: hidden; min-height: 280px;
+    position: relative;
+  }
+  .leader-img-inner {
+    width: 160px; height: 160px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--amber-light), var(--green-light));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 64px; border: 6px solid white;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+  }
+  .leader-info { padding: 50px 48px; }
+  .leader-info .role {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--green-dark); margin-bottom: 8px;
+  }
+  .leader-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 800; margin-bottom: 20px;
+  }
+  .leader-quote {
+    font-size: 17px; line-height: 1.75; color: var(--steel);
+    border-left: 4px solid var(--amber); padding-left: 20px;
+    font-style: italic; margin-bottom: 28px;
+  }
+  .leader-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+  .leader-tag {
+    background: var(--green-light); color: var(--green-dark);
+    padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+  }
+
+  /* CERTIFICATION */
+  .certification { background: var(--cream); }
+  .cert-card {
+    background: white; border-radius: 20px; padding: 40px;
+    border: 2px solid var(--amber-light);
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 32px; align-items: center;
+    box-shadow: 0 6px 30px rgba(245,158,11,0.1);
+    margin-top: 40px;
+  }
+  .cert-icon {
+    width: 80px; height: 80px; border-radius: 16px;
+    background: linear-gradient(135deg, var(--amber), #F97316);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+    box-shadow: 0 6px 20px rgba(245,158,11,0.35);
+  }
+  .cert-info h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .cert-info .cert-sub { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+  .cert-detail {
+    display: flex; gap: 24px; flex-wrap: wrap;
+  }
+  .cert-detail-item { font-size: 13px; color: var(--steel); }
+  .cert-detail-item strong { font-weight: 700; color: var(--charcoal); }
+
+  /* CONTACT */
+  .contact { background: linear-gradient(135deg, var(--green-dark) 0%, #166534 100%); }
+  .contact h2 { color: white; }
+  .contact .section-tag { color: var(--amber); }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 50px; align-items: start;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 24px; }
+  .contact-item {
+    display: flex; gap: 18px; align-items: flex-start;
+  }
+  .contact-item-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+  }
+  .contact-item-text h4 { color: white; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .contact-item-text p { color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.5; }
+  .contact-item-text a { color: var(--amber-light); text-decoration: none; }
+
+  .contact-form {
+    background: rgba(255,255,255,0.1); border-radius: 20px; padding: 36px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .contact-form h3 { color: white; font-size: 20px; font-weight: 700; margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .form-group label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); }
+  .form-group input, .form-group textarea, .form-group select {
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px; padding: 12px 16px; font-size: 14px; color: white;
+    font-family: 'DM Sans', sans-serif; outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--amber); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { color: var(--charcoal); }
+
+  .btn-submit {
+    width: 100%; padding: 14px;
+    background: linear-gradient(135deg, var(--amber), #F97316);
+    color: white; border: none; border-radius: 10px;
+    font-size: 15px; font-weight: 700; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    box-shadow: 0 4px 20px rgba(245,158,11,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,158,11,0.5); }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal); padding: 40px 5%;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 800; color: white; margin-bottom: 12px;
+  }
+  .footer-logo .r { color: var(--red); }
+  .footer-logo .g { color: var(--green); }
+  footer p { color: #78716C; font-size: 13px; }
+  .footer-gst { 
+    font-size: 12px; color: #57534E; margin-top: 8px;
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media(max-width: 768px) {
+    .hero-inner, .about-grid, .values-grid, .products-grid,
+    .contact-grid, .leader-card { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .stats-inner { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-visual { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .products-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .cert-card { grid-template-columns: 1fr; }
+    .leader-img { min-height: 200px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="badge">AMU</div>
+    <div class="brand"><em>ASIA</em> <span>METAL</span><br><span>UDYOG</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#values">Our Values</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get a Quote →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-text fade-in">
+      <div class="hero-tag">
+        <div class="dot"></div>
+        Est. 2022 · Faridabad, India
+      </div>
+      <h1><span class="highlight">Quality</span><br>Infrastructure<br>You Can <span class="highlight-green">Trust</span></h1>
+      <p class="hero-desc">Asia Metal Udyog specializes in non-ferrous metals, aluminum products, crucibles, biomass pellets, and metal ingots — delivering quality, punctuality, and customer satisfaction.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">View Our Products</a>
+        <a href="#contact" class="btn-secondary">Contact Us</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1581579186913-45ac3e6efe93?w=400&q=80" alt="Metal casting">
+        <div class="card-label">🏭 Industrial Manufacturing</div>
+      </div>
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80" alt="Metal ingots">
+        <div class="card-label">⚙️ Premium Quality</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-in">
+      <div class="stat-num">2022</div>
+      <div class="stat-label">Year Established</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-num">3+</div>
+      <div class="stat-label">Product Categories</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-num">GST</div>
+      <div class="stat-label">Registered Business</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Quality Focused</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-tag">Who We Are</div>
+    <h2>Built on Metal,<br>Driven by Excellence</h2>
+    <p class="section-desc">A Faridabad-based manufacturer and authorized dealer bringing premium non-ferrous metals and industrial products to the Indian market.</p>
+    <div class="about-grid">
+      <div class="about-image fade-in">
+        <img src="https://images.unsplash.com/photo-1574523938510-3c8cec2b8fc2?w=600&q=80" alt="Metal factory" />
+        <div class="ribbon">📍 Faridabad, Haryana</div>
+      </div>
+      <div class="fade-in">
+        <p style="font-size:16px;line-height:1.8;color:var(--steel);margin-bottom:24px;">
+          Asia Metal Udyog (AMU) was founded in 2022 with a clear purpose — to bring world-class non-ferrous metals and aluminum products to Indian industries. Located at Gazipur Industrial Area, Faridabad, we serve clients across the region with reliability and precision.
+        </p>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon amber">🏆</div>
+            <div>
+              <h4>Quality First</h4>
+              <p>Every product meets strict quality parameters before reaching our clients. We never compromise on standards.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon green">⏱️</div>
+            <div>
+              <h4>Punctual Delivery</h4>
+              <p>We believe time is money. Our logistics and supply chain ensure on-time delivery, every time.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon red">🤝</div>
+            <div>
+              <h4>Customer Satisfaction</h4>
+              <p>Our mission centers on building long-term relationships by exceeding customer expectations consistently.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-inner">
+    <div class="products-header fade-in">
+      <div>
+        <div class="section-tag">What We Offer</div>
+        <h2>Our Products</h2>
+      </div>
+      <p style="max-width:320px;font-size:14px;color:var(--muted);line-height:1.6;text-align:right;">From high-temp crucibles to biomass energy — we supply industries with the essentials they depend on.</p>
+    </div>
+    <div class="products-grid">
+
+      <!-- Crucibles -->
+      <div class="product-card fade-in">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1616432043562-3671ea2e5242?w=500&q=80" alt="Crucibles" onerror="this.parentElement.innerHTML='🏺'">
+          <div class="product-badge">Authorized Dealer</div>
+        </div>
+        <div class="product-body">
+          <h3>Crucibles</h3>
+          <p>Premium Silicon Carbide & Clay Graphite Crucibles for Indian foundries. Platinum Brand SiC and Century Brand Clay Graphite — sourced from Zircar Refractories.</p>
+          <div class="product-specs">
+            <span class="spec-tag">Silicon Carbide</span>
+            <span class="spec-tag">Clay Graphite</span>
+            <span class="spec-tag">Isostatic Tech</span>
+            <span class="spec-tag">High Temp</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Biomass Pellets -->
+      <div class="product-card fade-in">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=500&q=80" alt="Biomass Pellets">
+          <div class="product-badge">Eco-Friendly</div>
+        </div>
+        <div class="product-body">
+          <h3>Biomass Pellets</h3>
+          <p>High-calorific biomass fuel pellets for industrial furnaces and boilers. A green alternative to fossil fuels, packed for easy handling.</p>
+          <div class="product-specs">
+            <span class="spec-tag">Size: 6mm</span>
+            <span class="spec-tag">GCV: 4200 kcal/kg</span>
+            <span class="spec-tag">±100 tolerance</span>
+            <span class="spec-tag">25 kg packing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ingots -->
+      <div class="product-card fade-in">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1518709414768-a88981a4515d?w=500&q=80" alt="Aluminum Zinc Ingots">
+          <div class="product-badge">Non-Ferrous</div>
+        </div>
+        <div class="product-body">
+          <h3>Metal Ingots</h3>
+          <p>High-purity Aluminum and Zinc ingots supplied for die-casting, alloying, and manufacturing applications across Haryana and beyond.</p>
+          <div class="product-specs">
+            <span class="spec-tag">Aluminum</span>
+            <span class="spec-tag">Zinc</span>
+            <span class="spec-tag">High Purity</span>
+            <span class="spec-tag">Die-Cast Ready</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values" id="values">
+  <div class="section-inner">
+    <div class="section-tag">Our Foundation</div>
+    <h2>Mission, Vision & Values</h2>
+    <p class="section-desc">Three pillars that define who we are and how we operate every single day.</p>
+    <div class="values-grid">
+      <div class="value-card fade-in">
+        <div class="icon">🎯</div>
+        <h3>Our Principal</h3>
+        <p>The foundational principles of Asia Metal Udyog are <span class="accent">quality, punctuality, and customer satisfaction</span>. These are not just words — they are embedded in every process we run.</p>
+      </div>
+      <div class="value-card fade-in">
+        <div class="icon">🚀</div>
+        <h3>Mission Statement</h3>
+        <p>We believe in providing <span class="accent">quality satisfaction, timely and prompt delivery</span> to our valuable clients. Each order is treated with the same dedication and precision.</p>
+      </div>
+      <div class="value-card fade-in">
+        <div class="icon">🌱</div>
+        <h3>Vision Statement</h3>
+        <p>Providing a <span class="accent">suitable working environment</span> to our employees, where they can excel and grow along with our organization — building a future together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="leadership" id="leadership">
+  <div class="section-inner">
+    <div class="section-tag">Meet the Leader</div>
+    <h2>Leadership</h2>
+    <div class="leader-card fade-in">
+      <div class="leader-img">
+        <div class="leader-img-inner">👨‍💼</div>
+      </div>
+      <div class="leader-info">
+        <div class="role">Director, Asia Metal Udyog</div>
+        <h3>Deepesh Kumar</h3>
+        <div class="leader-quote">
+          "Our mission is to achieve customer satisfaction and we always try to introduce new technology in India. Our top most priority is to keep the best quality parameters."
+        </div>
+        <div class="leader-tags">
+          <span class="leader-tag">Quality Champion</span>
+          <span class="leader-tag">Technology Driven</span>
+          <span class="leader-tag">Customer First</span>
+          <span class="leader-tag">Industry Leader</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATION -->
+<section class="certification" id="certification">
+  <div class="section-inner">
+    <div class="section-tag">Trust & Credibility</div>
+    <h2>Certifications</h2>
+    <p class="section-desc">We are a certified and GST-registered business, backed by reputed industry partnerships.</p>
+    <div class="cert-card fade-in">
+      <div class="cert-icon">🏅</div>
+      <div class="cert-info">
+        <h3>Zircar Refractories Limited – Platinum Dealership</h3>
+        <p class="cert-sub">Certificate of Dealership — Authorized Dealer for 'Platinum' Brand SiC Crucibles & 'Century' Brand Clay Graphite Crucibles</p>
+        <div class="cert-detail">
+          <div class="cert-detail-item"><strong>Issued:</strong> 01 June 2025</div>
+          <div class="cert-detail-item"><strong>Valid:</strong> 2 Years</div>
+          <div class="cert-detail-item"><strong>Area:</strong> Faridabad</div>
+          <div class="cert-detail-item"><strong>Authorized by:</strong> Alok Rai, Director – Zircar</div>
+          <div class="cert-detail-item"><strong>GSTIN:</strong> 06EGIPK9940R1ZF</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Reach Out</div>
+    <h2 style="color:white;">Get In Touch</h2>
+    <div class="contact-grid">
+      <div class="contact-info fade-in">
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text">
+            <h4>Office Address</h4>
+            <p>Plot No. 92, Near Radha Swami Satsang Bias,<br>Gazipur Industrial Area, Faridabad,<br>Haryana – 121004</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div class="contact-item-text">
+            <h4>Phone Numbers</h4>
+            <p><a href="tel:9720394645">+91 97203 94645</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div class="contact-item-text">
+            <h4>Email</h4>
+            <p><a href="mailto:asiametaludyog81@gmail.com">asiametaludyog81@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🧾</div>
+          <div class="contact-item-text">
+            <h4>GSTIN</h4>
+            <p style="color:rgba(255,255,255,0.7);font-family:monospace;font-size:15px;letter-spacing:0.06em;">06EGIPK9940R1ZF</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form fade-in">
+        <h3>Send an Enquiry</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@company.com">
+        </div>
+        <div class="form-group">
+          <label>Product Interest</label>
+          <select>
+            <option value="">Select a product...</option>
+            <option>Crucibles (SiC / Clay Graphite)</option>
+            <option>Biomass Pellets</option>
+            <option>Aluminum Ingots</option>
+            <option>Zinc Ingots</option>
+            <option>Other / General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us your requirements..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="alert('Thank you! We will contact you shortly.')">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span class="r">ASIA</span> <span class="g">METAL UDYOG</span></div>
+  <p>Quality Infrastructure · Faridabad, Haryana, India</p>
+  <p class="footer-gst">GSTIN: 06EGIPK9940R1ZF &nbsp;|&nbsp; Legal Name: Deepesh Kumar</p>
+  <p style="color:#3D3935;font-size:12px;margin-top:16px;">© 2025 Asia Metal Udyog. All rights reserved.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
